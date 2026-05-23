@@ -1,0 +1,208 @@
+
+[TestJsxNoLeakedRenderRule/invalid-0 - 1]
+Diagnostic 1: default (2:14 - 2:14)
+Message: Potential 0 or NaN render leak.
+   1 | 
+   2 | const a = <>{0 && <Foo />}</>;
+     |              ~
+   3 | const b = <>{NaN && <Foo />}</>;
+
+Diagnostic 2: default (3:14 - 3:16)
+Message: Potential 0 or NaN render leak.
+   2 | const a = <>{0 && <Foo />}</>;
+   3 | const b = <>{NaN && <Foo />}</>;
+     |              ~~~
+   4 |             
+---
+
+[TestJsxNoLeakedRenderRule/invalid-1 - 1]
+Diagnostic 1: default (2:14 - 2:16)
+Message: Potential 0 or NaN render leak.
+   1 | 
+   2 | const a = <>{(0) && <Foo />}</>;
+     |              ~~~
+   3 | const b = <>{(NaN) && <Foo />}</>;
+
+Diagnostic 2: default (3:14 - 3:18)
+Message: Potential 0 or NaN render leak.
+   2 | const a = <>{(0) && <Foo />}</>;
+   3 | const b = <>{(NaN) && <Foo />}</>;
+     |              ~~~~~
+   4 |             
+---
+
+[TestJsxNoLeakedRenderRule/invalid-2 - 1]
+Diagnostic 1: default (7:14 - 7:14)
+Message: Potential 0 or NaN render leak.
+   6 | const a = <>{x && <Foo />}</>;
+   7 | const b = <>{y && <Foo />}</>;
+     |              ~
+   8 | const c = <>{z && <Foo />}</>;
+
+Diagnostic 2: default (8:14 - 8:14)
+Message: Potential 0 or NaN render leak.
+   7 | const b = <>{y && <Foo />}</>;
+   8 | const c = <>{z && <Foo />}</>;
+     |              ~
+   9 | const d = <>{w && <Foo />}</>;
+---
+
+[TestJsxNoLeakedRenderRule/invalid-3 - 1]
+Diagnostic 1: default (7:14 - 7:14)
+Message: Potential 0 or NaN render leak.
+   6 | const a = <>{x && <Foo />}</>;
+   7 | const b = <>{y && <Foo />}</>;
+     |              ~
+   8 | const c = <>{z && <Foo />}</>;
+
+Diagnostic 2: default (8:14 - 8:14)
+Message: Potential 0 or NaN render leak.
+   7 | const b = <>{y && <Foo />}</>;
+   8 | const c = <>{z && <Foo />}</>;
+     |              ~
+   9 | const d = <>{w && <Foo />}</>;
+---
+
+[TestJsxNoLeakedRenderRule/invalid-4 - 1]
+Diagnostic 1: default (6:14 - 6:26)
+Message: Potential 0 or NaN render leak.
+   5 | const SomeComponent = (_p: any) => <div />;
+   6 | const a = <>{someCondition && <SomeComponent prop1={val1} prop2={val2} />}</>;
+     |              ~~~~~~~~~~~~~
+   7 |             
+---
+
+[TestJsxNoLeakedRenderRule/invalid-5 - 1]
+Diagnostic 1: default (6:14 - 6:26)
+Message: Potential 0 or NaN render leak.
+   5 | const SomeComponent = (_p: any) => <div />;
+   6 | const a = <>{someCondition && <SomeComponent prop1={val1} prop2={val2} />}</>;
+     |              ~~~~~~~~~~~~~
+   7 |             
+---
+
+[TestJsxNoLeakedRenderRule/invalid-6 - 1]
+Diagnostic 1: default (6:14 - 6:26)
+Message: Potential 0 or NaN render leak.
+   5 | const SomeComponent = (_p: any) => <div />;
+   6 | const a = <>{someCondition && <SomeComponent prop1={val1} prop2={val2} />}</>;
+     |              ~~~~~~~~~~~~~
+   7 |             
+---
+
+[TestJsxNoLeakedRenderRule/invalid-7 - 1]
+Diagnostic 1: default (6:78 - 6:90)
+Message: Potential 0 or NaN render leak.
+   5 | const SomeComponent = (_p: any) => <div />;
+   6 | const a = <>{!!someCondition ? <SomeComponent prop1={val1} prop2={val2} /> : someCondition && <div />}</>;
+     |                                                                              ~~~~~~~~~~~~~
+   7 |             
+---
+
+[TestJsxNoLeakedRenderRule/invalid-8 - 1]
+Diagnostic 1: default (9:8 - 9:20)
+Message: Potential 0 or NaN render leak.
+   8 |     <>
+   9 |       {someCondition && <Foo />}
+     |        ~~~~~~~~~~~~~
+  10 |     </>
+---
+
+[TestJsxNoLeakedRenderRule/invalid-9 - 1]
+Diagnostic 1: default (10:8 - 10:20)
+Message: Potential 0 or NaN render leak.
+   9 |     <>
+  10 |       {someCondition && <SomeComponent />}
+     |        ~~~~~~~~~~~~~
+  11 |     </>
+---
+
+[TestJsxNoLeakedRenderRule/invalid-10 - 1]
+Diagnostic 1: default (7:13 - 7:17)
+Message: Potential 0 or NaN render leak.
+   6 | const App = ({ value }: { value: A }) => {
+   7 |   return <>{value && <div>{value}</div>}</>;
+     |             ~~~~~
+   8 | };
+---
+
+[TestJsxNoLeakedRenderRule/invalid-11 - 1]
+Diagnostic 1: default (3:15 - 3:19)
+Message: Potential 0 or NaN render leak.
+   2 | const App = ({ value }: { value: number }) => {
+   3 |   const foo = value && <Foo />;
+     |               ~~~~~
+   4 |   return <>{foo}</>;
+---
+
+[TestJsxNoLeakedRenderRule/invalid-12 - 1]
+Diagnostic 1: default (3:13 - 3:17)
+Message: Potential 0 or NaN render leak.
+   2 | function App<T>({ value }: { value: T }) {
+   3 |   return <>{value && <Foo />}</>;
+     |             ~~~~~
+   4 | }
+---
+
+[TestJsxNoLeakedRenderRule/invalid-13 - 1]
+Diagnostic 1: default (3:13 - 3:17)
+Message: Potential 0 or NaN render leak.
+   2 | function App<T extends number>({ value }: { value: T }) {
+   3 |   return <>{value && <Foo />}</>;
+     |             ~~~~~
+   4 | }
+---
+
+[TestJsxNoLeakedRenderRule/invalid-14 - 1]
+Diagnostic 1: default (4:13 - 4:17)
+Message: Potential 0 or NaN render leak.
+   3 | function App({ count }: { count: Count }) {
+   4 |   return <>{count && <Foo />}</>;
+     |             ~~~~~
+   5 | }
+---
+
+[TestProbeAll/invalid-0 - 1]
+Diagnostic 1: default (3:13 - 3:17)
+Message: Potential leaked value value that might cause unintentionally rendered values or rendering crashes.
+   2 | function App<T>({ value }: { value: T }) {
+   3 |   return <>{value && <Foo />}</>;
+     |             ~~~~~
+   4 | }
+---
+
+[TestProbeAll/invalid-1 - 1]
+Diagnostic 1: default (3:13 - 3:17)
+Message: Potential leaked value value that might cause unintentionally rendered values or rendering crashes.
+   2 | function App<T extends number>({ value }: { value: T }) {
+   3 |   return <>{value && <Foo />}</>;
+     |             ~~~~~
+   4 | }
+---
+
+[TestProbeAll/invalid-2 - 1]
+Diagnostic 1: default (3:13 - 3:17)
+Message: Potential leaked value value that might cause unintentionally rendered values or rendering crashes.
+   2 | function App<T extends unknown>({ value }: { value: T }) {
+   3 |   return <>{value && <Foo />}</>;
+     |             ~~~~~
+   4 | }
+---
+
+[TestProbeBrand/invalid-0 - 1]
+Diagnostic 1: default (4:13 - 4:17)
+Message: Potential leaked value count that might cause unintentionally rendered values or rendering crashes.
+   3 | function App({ count }: { count: Count }) {
+   4 |   return <>{count && <Foo />}</>;
+     |             ~~~~~
+   5 | }
+---
+
+[TestProbeUnconstrainedT/invalid-0 - 1]
+Diagnostic 1: default (3:13 - 3:17)
+Message: Potential leaked value value that might cause unintentionally rendered values or rendering crashes.
+   2 | function App<T>({ value }: { value: T }) {
+   3 |   return <>{value && <Foo />}</>;
+     |             ~~~~~
+   4 | }
+---

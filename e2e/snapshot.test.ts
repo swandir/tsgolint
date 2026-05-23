@@ -19,6 +19,7 @@ const ALL_RULES = [
   'consistent-return',
   'consistent-type-exports',
   'dot-notation',
+  'jsx-no-leaked-render',
   'no-array-delete',
   'no-base-to-string',
   'no-confusing-void-expression',
